@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Emoji Css -->
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Boolzapp</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!--------------------------- Container WebApp --------------------------->
+        <div id="container-webapp">
+
+            <!----------------- Left-side ----------------->
+            <div id="left-side">
+
+                <!----------- header ----------->
+                <div class="header">
+
+                    <!-- left( profile ) -->
+                    <div id="profile">
+
+                        <div class="img">
+
+                            <img src="./assets/img/avatar_1.jpg" alt="immagine profilo">
+                        </div>
+                        <h5>Alvaro Aasrbaiza</h5>
+                    </div>
+
+                    <!-- right -->
+                    <div class="header-right">
+
+                        <!-- status -->
+                        <div class="icons">
+                            <i class="fa-solid fa-circle-notch"></i>
+                        </div>
+
+                        <!-- new message -->
+                        <div class="icons">
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+
+                        <!-- menu -->
+                        <div class="icons">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------- body ----------->
+                <div id="body-Ls">
+
+                    <!-- alerts -->
+                    <section id="alerts">
+                        <div id="container-alerts">
+                            <div>
+                                <i class="fa-solid fa-bell-slash"></i>
+                            </div>
+
+                            <div>
+                                <p>Ricevi notifiche di nuovi messaggi</p>
+                                <a href="#">Attiva notifiche desktop</a>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- search -->
+                    <section id="search">
+                        <div>
+                            <input id="ricerca" type="search" placeholder="Cerca o inizia una nuova chat"
+                                v-model="filtraggio" @keyup="ricerca">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </section>
+
+                    <!-- contacts -->
+                    <section id="contacts">
+
+                        <!-- contact -->
+                        <div class="contact friend" v-for="(element, index) in contacts" :key="index"
+                            @click="apriMessaggi(index)">
+
+                            <!-- img -->
+                            <div class="img">
+
+                                <img :src="`./assets/${element.avatar}`" :alt="element.name">
+                            </div>
+
+                            <!-- text -->
+                            <div class="text">
+
+                                <div>
+                                    <h4>{{ element.name }}</h4>
+                                    <p>Ultimo messaggio inviato</p>
+                                </div>
+                                <div>
+                                    <span>{{ element.messages[element.messages.length-1].date.slice( 11, 16 ) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!----------------- Right-side ----------------->
+            <div id="right-side">
+
+                <!---------- header ---------->
+                <div class="header">
+
+                    <!-- left ( contact ) -->
+                    <div id="contact-messages" class="contact">
+
+                        <!-- img -->
+                        <div class="img">
+
+                            <img :src="`./assets/${ contacts[indice].avatar }`" :alt="contacts[indice].name">
+                        </div>
+
+                        <!-- text -->
+                        <div class="text">
+
+                            <div>
+                                <h4>{{ contacts[indice].name }}</h4>
+                                <p v-if="boolean">
+                                    Ultimo messaggio inviato <span>
+                                        {{ contacts[indice].messages[contacts[indice].messages.length-1].date.slice( 11,
+                                        16 ) }}
+                                    </span>
+                                </p>
+                                <p v-else>
+                                    Sta scrivendo...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- right ( icons ) -->
+                    <div class="header-right">
+
+                        <!-- search -->
+                        <div class="icons">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <!-- clip -->
+                        <div class="icons">
+                            <i class="fa-solid fa-paperclip"></i>
+                        </div>
+
+                        <!-- menu -->
+                        <div class="icons">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------- body ---------->
+
+                <!-- messages -->
+                <div id="messages">
+
+                    <div id="msg-container">
+
+                        <!-- message sent -->
+                        <div :class="contacts[indice].messages[index].status == 'sent' ?'message sent' : 'message received'"
+                            v-for="(element, index) in contacts[indice].messages" :key="index">
+
+                            <i class="fa-solid fa-arrow-pointer fa-rotate-90"></i>
+
+                            <div class="par">
+
+                                <div v-html="element.message"></div>
+                            </div>
+
+                            <div class="date">
+                                <span>{{ element.date.slice( 11, 16 ) }}</span>
+                            </div>
+
+                            <div @click="optionsShow(index)" class="options">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+
+                            <div class="dropdown dropdown-content">
+                                <span>Message info</span>
+                                <span @click="deleteMessage(index)">Delete message</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- emojis container -->
+                <div id="emojis">
+
+                    <!-- header -->
+                    <div id="emojis-header">
+
+                        <!-- eomjis category -->
+                        <div v-for="(element, index) in emojis" :key="index" class="emos">
+                            <a class="emos_link" @click="clicked(index)" :href="`#${element.id}`">
+                                <i :class="element.classes"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- body -->
+                    <div id="emojis-body">
+
+                        <!-- search -->
+                        <div id="input-emoji">
+                            <input type="search" placeholder="Cerca emoji">
+                        </div>
+
+                        <!-- emojis -->
+                        <div id="emo-ctner-body">
+
+                            <div v-for="(element, index) in emojis" :key="index" :id="element.id">
+                                <h5>{{ element.name }}</h5>
+
+                                <!-- emoticons -->
+                                <div class="emoticons">
+                                    <div @click="selectEmoji(element)" v-for="(element, iEmoji) in element.emos"
+                                        :key="iEmoji">
+
+                                        <span :class="element"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- send new message -->
+                <div id="new-message">
+
+                    <div>
+
+                        <!-- emoticons -->
+                        <div @click="emojisShow" id="emoticons" class="icons">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+
+                        <p id="input-new-message" @keyup.enter="creoMessaggio" type="text" contenteditable="true"
+                            placeholder="Scrivi un messaggio"></p>
+
+                        <!-- <div v-model="nuovoMessaggio" contenteditable="true"></div> -->
+
+                        <!-- record -->
+                        <div data-lexical-text="true" class="icons">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Vue -->
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    <!-- Luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+    <!-- Js -->
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+:root {
+    --hMessages: calc(100% - 125px);
+    --dispEmojis: none;
+}
+
+/* app */
+#app {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient( #00a682 20%, #e2e1dc 20% 100%);
+}
+
+/* h4 */
+h4, h5 {
+    font-weight: 400;
+}
+
+/* --------- Images --------- */
+.img {
+    height: 65%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;    
+    overflow: hidden;
+    cursor: pointer;
+}
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* --------------------------- Container WebApp --------------------------- */
+#container-webapp {
+    width: 80%;
+    height: 95%;
+    display: flex;
+    background-color: #fff;
+}
+
+/* ----------------- Left-side ----------------- */
+#container-webapp #left-side {
+    width: 35%;
+    height: 100%;
+}
+
+/* -------- header -------- */
+#container-webapp .header {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eaeaea;
+}
+
+/* header - left( profile ) */
+#container-webapp #left-side .header #profile {
+    height: 100%;    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+/* header - right */
+#container-webapp .header .header-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+}
+/* icons */
+#container-webapp .icons {
+    cursor: pointer;
+    width: 40px;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #b1b1b1;
+}
+
+/* -------- body -------- */
+#container-webapp #left-side #body-Ls {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 65px);
+}
+
+/* alerts */
+#container-webapp #left-side #body-Ls #alerts {
+    width: 100%;
+    height: 80px;
+    background-color: #8edafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#container-webapp #left-side #body-Ls #alerts #container-alerts {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    padding-left: 10px;    
+    gap: 10px;
+    font-size: 0.9rem;
+}
+#container-webapp #left-side #body-Ls #alerts #container-alerts div:first-child {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 45px;
+    background: white;
+    border-radius: 50%;
+    color: #8edafc;
+}
+#container-webapp #left-side #body-Ls #alerts #container-alerts div a {
+    color: #507487;
+    font-size: 0.8rem;
+}
+
+/* search */
+#container-webapp #left-side #body-Ls #search {
+    width: 100%;
+    height: 40px;
+    padding: 0 5px;
+    background-color: #fafafa;    
+}
+#container-webapp #left-side #body-Ls #search div {
+    position: relative;
+}
+#container-webapp #left-side #body-Ls #search div input {
+    width: 100%;
+    height: 30px;
+    text-indent: 70px;
+    margin: 5px auto;
+    border: 1px solid #b1b1b150;
+    border-radius: 10px;
+}
+#container-webapp #left-side #body-Ls #search div i.fa-magnifying-glass {
+    position: absolute;
+    left: 30px;
+    bottom: 50%;
+    transform: translateY(50%);
+    color: #b1b1b1;
+}
+
+/****--- contacts ---****/
+#container-webapp #left-side #body-Ls #contacts {
+    width: 100%;
+    height: calc(100% - 120px);
+    overflow-y: auto;
+    background-color: #ffff;
+}
+/* contact */
+#container-webapp .contact {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+#container-webapp #left-side #body-Ls #contacts .contact:hover {
+    background-color: #eaeaea;
+}
+/* contact - text */
+#container-webapp #left-side #body-Ls #contacts .contact .text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;    
+    height: 100%;
+    margin-left: 10px;
+    border-top: 1px solid #eaeaea;
+}
+#container-webapp #left-side #body-Ls #contacts .contact .text div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#container-webapp #left-side #body-Ls #contacts .contact .text div {
+    height: 60%;
+}
+#container-webapp #left-side #body-Ls #contacts .contact .text p,
+#container-webapp #left-side #body-Ls #contacts .contact .text span {
+    color: #b1b1b1;
+    font-size: 0.8rem;
+    line-height: 20px;
+}
+
+/* ---------------- Right-side ---------------- */
+#container-webapp #right-side {
+    width: 65%;
+    height: 100%;
+    border-left: 1px solid #b1b1b1;
+}
+
+/* -------- header -------- */
+
+/* left ( contact ) */
+#container-webapp #right-side .header .contact {
+    height: 65px;
+}
+
+/* text */
+#container-webapp #right-side .header .contact .text {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 10px;
+}
+#container-webapp #right-side .header .contact .text p {
+    font-size: 0.8rem;
+    line-height: 20px;
+    color: #6e7679;
+}
+
+/* -------- body -------- */
+
+/**** messages ****/
+#container-webapp #right-side #messages {
+    width: 100%;
+    height: var(--hMessages);
+    background: url("../img/mine.jpg");
+    overflow-y: auto;
+}
+#container-webapp #right-side #messages #msg-container {
+    width: 80%;
+    height: 700px;
+    margin: 40px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+/* message */
+#container-webapp #right-side #messages #msg-container .message {
+    min-height: 35px;    
+    min-width: 90px;
+    max-width: 70%;
+    margin: 5px 0;
+    display: flex;
+    position: relative;
+}
+#container-webapp #right-side #messages #msg-container .message .date{
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    font-size: 0.7rem;
+    padding: 5px;
+}
+#container-webapp #right-side #messages #msg-container .message .par {
+    padding: 10px 5px 10px 10px;
+}
+#container-webapp #right-side #messages #msg-container .message.index {
+    z-index: 999;
+}
+
+/* message - options */
+#container-webapp #right-side #messages #msg-container .message .options {
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    top: 0;
+    right: 0;
+    color: #b1b1b1;
+}
+#container-webapp #right-side #messages #msg-container .message:hover .options {
+    display: block;
+}
+/* options - dropdown */
+#container-webapp #right-side #messages #msg-container .message .dropdown-content {
+    position: absolute;
+    background-color: #f1f1f1;
+    display: none;
+    right: 0;
+    top: 20px;
+    z-index: 99999;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+#container-webapp #right-side #messages #msg-container .message .dropdown-content span {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+#container-webapp #right-side #messages #msg-container .message .dropdown-content span:hover {
+    background-color: #ddd;
+}
+#container-webapp #right-side #messages #msg-container .message .dropdown.dropdown-content.show {
+    display: block;
+}
+
+/* message - sent */
+#container-webapp #right-side #messages #msg-container .message.sent {
+    align-self: flex-end;
+    background-color: #d9fdd3;
+    border-radius: 10px 0 10px 10px;
+    filter: drop-shadow(1px 1px 1px #0000006b);
+}
+#container-webapp #right-side #messages #msg-container .message.sent > i {
+    font-weight: 900;
+    position: absolute;
+    rotate: 359.5deg;
+    top: -2.8px;
+    color: #d9fdd3;
+    right: -6px;
+}
+
+/* message - received */
+#container-webapp #right-side #messages #msg-container .message.received {
+    align-self: flex-start;
+    background-color: #ffff;
+    border-radius: 0 10px 10px;
+    filter: drop-shadow(-0.5px 1px 1px #0000006b);
+}
+#container-webapp #right-side #messages #msg-container .message.received > i {
+    rotate: 229.5deg;
+    position: absolute;
+    top: -5.3px;
+    left: -5px;
+    color: white;
+}
+
+/**** send new message ****/
+#container-webapp #right-side #new-message {
+    width: 100%;
+    height: 60px;
+    background-color: #f3eeea;
+}
+#container-webapp #right-side #new-message > div {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;    
+    align-items: center;
+}
+
+/* record */
+#container-webapp #right-side #new-message > div .icons {
+    color: #6b7376;
+}    
+
+/* input */
+#container-webapp #right-side #new-message #input-new-message {    
+    max-width: 100%;
+    height: 100%;
+    flex: 1;
+    margin: 0 10px;
+    font-size: 1rem;
+    text-indent: 15px;
+    border: none;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+/****--- emojis container ---****/
+#container-webapp #right-side #emojis {
+    display: var(--dispEmojis);
+    width: 100%;
+    height: 300px;
+    background-color: #f3eeea;
+}
+
+/* header */
+#container-webapp #right-side #emojis #emojis-header {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+    display: flex;
+}
+/* header - emojis category */
+#container-webapp #right-side #emojis #emojis-header .emos {
+    width: calc(100% / 9);
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.2rem;
+}
+/* header - a( link ) */
+#container-webapp #right-side #emojis #emojis-header .emos a {
+    display: block;
+    width: 100%;
+    color: #b1b1b1;
+}
+.selected{
+    color: #6b7376;
+    border-bottom: 5px solid #008069;
+}
+
+/* body */
+#container-webapp #right-side #emojis #emojis-body {
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}
+/* body - search */
+#container-webapp #right-side #emojis #emojis-body #input-emoji {
+    padding: 5px 10px;
+}
+#container-webapp #right-side #emojis #emojis-body #input-emoji > input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    text-indent: 10px;
+}
+/* body - emojis */
+#container-webapp #right-side #emojis #emojis-body #emo-ctner-body {
+    padding: 0 15px;
+    color: #6b7376;
+}
+/* emoticons */
+#container-webapp #right-side #emojis #emojis-body #emo-ctner-body .emoticons {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+    margin: 5px 0;
+}
+#container-webapp #right-side #emojis #emojis-body #emo-ctner-body .emoticons > div {   
+    padding: 7px;
+    cursor: pointer;
+}
